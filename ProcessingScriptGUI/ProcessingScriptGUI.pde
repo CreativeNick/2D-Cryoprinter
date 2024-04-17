@@ -9,8 +9,8 @@ float rectWidth, rectHeight;
 
 void setup() {
   size(640, 480);
-  println(Serial.list()); // Print all available serial ports
-  myPort = new Serial(this, Serial.list()[1], 115200); // Select your port index
+  println(Serial.list()); // Check all available serial ports
+  myPort = new Serial(this, Serial.list()[1], 115200); // Note to change if port is different
   myPort.bufferUntil('\n');
   rectWidth = width / float(cols);
   rectHeight = height / float(rows);
@@ -31,7 +31,6 @@ void draw() {
   }
 }
 
-
 void serialEvent(Serial myPort) {
   String inString = myPort.readStringUntil('\n');
   if (inString != null) {
@@ -51,11 +50,16 @@ void generateColorPalette() {
   colorMode(HSB, 255);
   for (int i = 0; i < 256; i++) {
     float hue;
-    if (i < 128) { // From dark purple to blue
+
+    // From dark purple to blue
+    if (i < 128) {
       hue = map(i, 0, 128, 255, 170); // Purple to blue hues in HSB
-    } else { // From blue to red
+
+    // From blue to red
+    } else {
       hue = map(i, 128, 256, 170, 0); // Blue to red hues in HSB
     }
+
     // HSB: Hue (color), Saturation, Brightness
     camColors[i] = color(hue, 255, map(i, 0, 255, 50, 255)); // From less bright to full brightness
   }
