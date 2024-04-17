@@ -1,13 +1,15 @@
 #include <Adafruit_MLX90640.h>
 
 Adafruit_MLX90640 mlx;
-float frame[32 * 24]; // Buffer for full frame of temperatures
-#define MINTEMP 20 // Low range of the sensor
-#define MAXTEMP 35 // High range of the sensor
+float frame[32 * 24]; 
+#define MINTEMP 20
+#define MAXTEMP 35
 
 void setup() {
   Serial.begin(115200);
-  while (!Serial); // wait for Serial to be ready
+
+  // wait for serial to be ready
+  while (!Serial);
 
   if (!mlx.begin(MLX90640_I2CADDR_DEFAULT, &Wire)) {
     Serial.println("MLX90640 not found!");
