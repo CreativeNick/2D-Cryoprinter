@@ -8,7 +8,7 @@ float frame[32 * 24];
 void setup() {
   Serial.begin(115200);
 
-  // wait for serial to be ready
+  // Wait for serial to be ready
   while (!Serial);
 
   if (!mlx.begin(MLX90640_I2CADDR_DEFAULT, &Wire)) {
