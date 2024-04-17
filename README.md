@@ -1,5 +1,5 @@
 # 2D Cryoprinter
-Repository for the 2D Cryo-Controlled "Cryoprinter."
+Repository for the 2D Temperature-Controlled "Cryoprinter."
 
 ## Getting Started
 
