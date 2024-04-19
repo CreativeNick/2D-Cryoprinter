@@ -26,7 +26,8 @@ void draw() {
       int flippedIndex = cols - 1 - j;
       
       fill(camColors[colorIndices[i][flippedIndex]]);
-      rect(flippedIndex * rectWidth, i * rectHeight, rectWidth, rectHeight);
+      rect(j * rectWidth, i * rectHeight, rectWidth, rectHeight); // Use 'j' instead of 'flippedIndex' for x position
+
     }
   }
 }
@@ -51,16 +52,19 @@ void generateColorPalette() {
   for (int i = 0; i < 256; i++) {
     float hue;
 
-    // From dark purple to blue
-    if (i < 128) {
-      hue = map(i, 0, 128, 255, 170); // Purple to blue hues in HSB
-
-    // From blue to red
+    // Lower third: Emphasizing colder areas
+    if (i < 85) {
+      hue = map(i, 0, 85, 180, 120); // From light blue to green
+      
+    // Middle third: Transition zone
+    } else if (i < 170) {
+      hue = map(i, 85, 170, 120, 60); // From green to yellow
+      
+    // Upper third: Warmer areas
     } else {
-      hue = map(i, 128, 256, 170, 0); // Blue to red hues in HSB
+      hue = map(i, 170, 255, 60, 0); // From yellow to red
     }
 
-    // HSB: Hue (color), Saturation, Brightness
-    camColors[i] = color(hue, 255, map(i, 0, 255, 50, 255)); // From less bright to full brightness
+    camColors[i] = color(hue, 255, map(i, 0, 255, 50, 255));
   }
 }
