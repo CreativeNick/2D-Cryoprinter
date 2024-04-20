@@ -24,11 +24,11 @@ Once both the Arduino and Processing setups are complete, first run the Arduino 
 ## Examples
 <table>
   <tr>
-    <td><img src="[URL_TO_IMAGE_1](https://github.com/CreativeNick/2D-Cryoprinter/assets/43157506/c9ec7f9d-6cc2-4624-ab05-2ba3231c9935)" width="100%" /></td>
-    <td><img src="[URL_TO_IMAGE_2](https://github.com/CreativeNick/2D-Cryoprinter/assets/43157506/7f3fd846-bb62-4be9-b793-bcc145a5bfc1)" width="100%" /></td>
+    <td><img src="https://github.com/CreativeNick/2D-Cryoprinter/assets/43157506/c9ec7f9d-6cc2-4624-ab05-2ba3231c9935" width="100%" /></td>
+    <td><img src="https://github.com/CreativeNick/2D-Cryoprinter/assets/43157506/7f3fd846-bb62-4be9-b793-bcc145a5bfc1" width="100%" /></td>
   </tr>
   <tr>
-    <td><img src="[URL_TO_IMAGE_3](https://github.com/CreativeNick/2D-Cryoprinter/assets/43157506/ae5008b1-7190-4132-8d64-197e4625c613)" width="100%" /></td>
-    <td><img src="[URL_TO_IMAGE_4](https://github.com/CreativeNick/2D-Cryoprinter/assets/43157506/93999908-74a3-4834-8cd0-caece8b744e3)" width="100%" /></td>
+    <td><img src="https://github.com/CreativeNick/2D-Cryoprinter/assets/43157506/ae5008b1-7190-4132-8d64-197e4625c613" width="100%" /></td>
+    <td><img src="https://github.com/CreativeNick/2D-Cryoprinter/assets/43157506/93999908-74a3-4834-8cd0-caece8b744e3" width="100%" /></td>
   </tr>
 </table>
