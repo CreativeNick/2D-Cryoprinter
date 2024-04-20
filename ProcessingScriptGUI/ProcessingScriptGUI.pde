@@ -9,9 +9,11 @@ float rectWidth, rectHeight;
 
 void setup() {
   size(640, 480);
-  println(Serial.list()); // Check all available serial ports
-  myPort = new Serial(this, Serial.list()[1], 115200); // Note to change if port is different
+  
+  println(Serial.list());
+  myPort = new Serial(this, Serial.list()[1], 115200); // **Note to change if port is different
   myPort.bufferUntil('\n');
+  
   rectWidth = width / float(cols);
   rectHeight = height / float(rows);
   colorMode(HSB, 255);
@@ -26,11 +28,14 @@ void draw() {
       int flippedIndex = cols - 1 - j;
       
       fill(camColors[colorIndices[i][flippedIndex]]);
-      rect(j * rectWidth, i * rectHeight, rectWidth, rectHeight); // Use 'j' instead of 'flippedIndex' for x position
+      rect(j * rectWidth, i * rectHeight, rectWidth, rectHeight);
 
     }
   }
 }
+
+int[][] tempColorIndices = new int[rows][cols]; 
+int currentRowIndex = 0;
 
 void serialEvent(Serial myPort) {
   String inString = myPort.readStringUntil('\n');
@@ -38,10 +43,17 @@ void serialEvent(Serial myPort) {
     inString = trim(inString);
     int[] colorsRow = int(split(inString, ' '));
     if (colorsRow.length == cols) {
-      for (int i = 0; i < rows - 1; i++) {
-        colorIndices[i] = colorIndices[i + 1];
+      tempColorIndices[currentRowIndex] = colorsRow;
+      
+      currentRowIndex++;
+      
+      if (currentRowIndex >= rows) {
+        for (int i = 0; i < rows; i++) {
+          System.arraycopy(tempColorIndices[i], 0, colorIndices[i], 0, cols);
+        }
+        
+        currentRowIndex = 0;
       }
-      colorIndices[rows - 1] = colorsRow;
     }
   }
 }
