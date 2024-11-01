@@ -8,14 +8,14 @@ int[] camColors;
 float rectWidth, rectHeight;
 
 void setup() {
-  size(640, 480);
+  size(480, 640);
   
   println(Serial.list());
   myPort = new Serial(this, Serial.list()[1], 115200); // **Note to change if port is different
   myPort.bufferUntil('\n');
   
-  rectWidth = width / float(cols);
-  rectHeight = height / float(rows);
+  rectWidth = width / float(rows);
+  rectHeight = height / float(cols);
   colorMode(HSB, 255);
   generateColorPalette();
 }
@@ -24,11 +24,12 @@ void draw() {
   background(0);
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < cols; j++) {
-      // Flip horizontally by starting from the right
+      float x = width - ((i + 1) * rectWidth);
+      float y = j * rectHeight;
       int flippedIndex = cols - 1 - j;
       
       fill(camColors[colorIndices[i][flippedIndex]]);
-      rect(j * rectWidth, i * rectHeight, rectWidth, rectHeight);
+      rect(x, y, rectWidth, rectHeight);
 
     }
   }
